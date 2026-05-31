@@ -1,0 +1,67 @@
+Levantar el servicio (CMD)
+
+cd C:\Users\duela\Downloads\milvus_demo
+docker compose up -d
+docker ps   # verificar que milvus, etcd y minio estén corriendo
+
+
+Conectar y crear colección (Python)
+
+
+from pymilvus import MilvusClient
+
+# Conectar al servidor Milvus
+client = MilvusClient(uri="http://127.0.0.1:19530")
+
+# Crear colección demo
+client.create_collection(
+    collection_name="demo_collection",
+    dimension=384,   # dimensión del modelo de embeddings
+    primary_field="id",
+    auto_id=True
+)
+
+
+Insertar datos de ejemplo (Python)
+
+
+import random
+
+# Generar vectores aleatorios
+vectors = [[random.random() for _ in range(384)] for _ in range(3)]
+texts = ["Alan Turing", "Artificial Intelligence", "Mathematics"]
+subjects = ["History", "AI", "Math"]
+
+# Insertar en la colección
+client.insert(
+    collection_name="demo_collection",
+    data=[{"vector": v, "text": t, "subject": s} for v, t, s in zip(vectors, texts, subjects)]
+)
+
+
+Consultar con embeddings (Python)
+
+
+from sentence_transformers import SentenceTransformer
+
+# Definir modelo de embeddings
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Codificar consulta
+query_vectors = model.encode(["Who is Alan Turing?"])
+
+# Buscar en Milvus
+res = client.search(
+    collection_name="demo_collection",
+    data=query_vectors.tolist(),
+    limit=2,
+    output_fields=["text", "subject"]
+)
+print(res)
+
+
+Mostrar “detrás de escena” (Python)
+
+
+# Mostrar cómo se ve un vector (primeros 10 números)
+print(query_vectors[0][:10])
