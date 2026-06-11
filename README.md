@@ -15,7 +15,7 @@ Este repositorio contiene el trabajo de investigacion sobre bases de datos vecto
 - Richard Bucardo Cajina
 - Zulay Bustos Chacon
 - Dylan Angelo Cardona Castillo
-- Elberth Carranza Chaves
+
 
 ---
 
