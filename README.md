@@ -11,15 +11,20 @@ Este repositorio contiene el trabajo de investigacion sobre bases de datos vecto
 
 ---
 
+## Objetivo General
+Implementar una solución basada en Milvus Lite que permita almacenar embeddings vectoriales y realizar búsquedas semánticas, comparando sus resultados con consultas tradicionales basadas en coincidencia exacta de palabras.
+
+---
+
 ## Integrantes
 - Richard Bucardo Cajina
-- Zulay Bustos Chacon
-- Dylan Angelo Cardona Castillo
+- Zulay Bustos Chacón
+- Dylan Cardona Castillo
 
 
 ---
 
-## Que es Milvus
+## ¿Que es Milvus?
 Milvus es una base de datos vectorial distribuida de codigo abierto desarrollada por Zilliz. Su nombre proviene del ave rapaz del genero Milvus, reconocida por su velocidad, vision aguda y adaptabilidad, cualidades que el equipo busco emular en el diseno del sistema.
 
 Zilliz comenzo a desarrollar Milvus en 2017 y lo dono a la LF AI & Data Foundation bajo la Linux Foundation en enero de 2020. Se distribuye bajo la Licencia Apache 2.0, lo que garantiza acceso libre al codigo fuente sin restricciones de uso.
@@ -35,7 +40,7 @@ A diferencia de una base de datos relacional tradicional, Milvus no busca por co
 
 ---
 
-## Archivos del repositorio
+## Estructura del proyecto
 - **Prueba.py** — verifica que Milvus Lite esta instalado correctamente
 - **datos.py** — crea la coleccion de peliculas y carga los datos vectorizados
 - **busqueda.py** — realiza la consulta semantica y la compara con SQL tradicional
