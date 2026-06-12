@@ -47,6 +47,7 @@ else:
 print("\n--- Resultado vectorial con Milvus ---")
 print("(Busca por similitud de significado, no por palabra exacta)\n")
 
+client.load_collection("peliculas")
 vector_consulta = modelo.encode([consulta]).tolist()
 
 resultados_milvus = client.search(
