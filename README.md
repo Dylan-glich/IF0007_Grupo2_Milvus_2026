@@ -1,4 +1,4 @@
-Nota: copiar y pegar este contenido en el editor de README de GitHub.
+
 
 # IF0007 - Grupo 2 - Milvus
 ### Bases de Datos I — Universidad de Costa Rica
