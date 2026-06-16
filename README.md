@@ -1,144 +1,288 @@
 # IF0007 - Grupo 2 - Milvus
+
 ### Bases de Datos I - Universidad de Costa Rica
-#### Sede Regional del Caribe | Recinto de Limon
+
+#### Sede Regional del Caribe | Recinto de Limón
+
 #### Docente: Dr. Carlos Morales Castro
 
 ---
 
-## Descripcion del proyecto
+## Descripción del proyecto
 
-Este repositorio contiene el trabajo de investigacion sobre bases de datos vectoriales, especificamente sobre Milvus. Incluye una parte practica donde se demuestra como crear una base de datos vectorial local usando Milvus Lite, cargar datos y realizar busquedas semanticas comparadas con consultas SQL tradicionales.
+Este repositorio contiene el trabajo de investigación sobre bases de datos vectoriales, específicamente sobre Milvus. Incluye una parte práctica donde se demuestra cómo crear una base de datos vectorial local utilizando Milvus Lite, generar embeddings y realizar búsquedas semánticas. Además, se incluye una comparación con consultas SQL tradicionales realizadas en PostgreSQL utilizando el mismo conjunto de datos.
 
 ---
 
 ## Objetivo General
 
-Implementar una solucion basada en Milvus Lite que permite almacenar incrustaciones vectoriales y realizar busquedas semanticas, comparando sus resultados con consultas tradicionales basadas en coincidencia exacta de palabras.
+Implementar una solución basada en Milvus Lite que permita almacenar embeddings vectoriales y realizar búsquedas semánticas, comparando sus resultados con consultas tradicionales basadas en coincidencia textual.
 
 ---
 
 ## Integrantes
 
-- Richard Bucardo Cajina
-- Zulay Bustos Chacon
-- Dylan Cardona Castillo
+* Richard Bucardo Cajina
+* Zulay Bustos Chacón
+* Dylan Cardona Castillo
 
 ---
 
-## Que es Milvus
+## ¿Qué es Milvus?
 
-Milvus es una base de datos vectorial distribuida de codigo abierto desarrollada por Zilliz. Su nombre proviene del ave rapaz del genero Milvus, reconocida por su velocidad, vision aguda y adaptabilidad, cualidades que el equipo busco emular en el diseno del sistema.
+Milvus es una base de datos vectorial distribuida de código abierto desarrollada por Zilliz. Está diseñada para almacenar, indexar y consultar grandes volúmenes de vectores utilizados en aplicaciones de Inteligencia Artificial.
 
-Zilliz comenzo a desarrollar Milvus en 2017 y lo dono a la LF AI & Data Foundation bajo la Linux Foundation en enero de 2020. Se distribuye bajo la Licencia Apache 2.0, lo que garantiza acceso libre al codigo fuente sin restricciones de uso.
-
-A diferencia de una base de datos relacional tradicional, Milvus no busca por coincidencia exacta de palabras sino por similitud de significado, lo que lo hace ideal para aplicaciones de inteligencia artificial.
+A diferencia de una base de datos relacional tradicional, Milvus permite realizar búsquedas por similitud semántica, recuperando información relacionada por significado en lugar de depender únicamente de coincidencias exactas de palabras.
 
 ---
 
 ## Modos de despliegue
 
-- **Milvus Lite** - biblioteca Python ligera, instalable con pip. Ideal para pruebas y proyectos pequenos. Es el modo que usamos en este proyecto.
-- **Milvus Standalone** - nodo unico apto para hasta 100 millones de vectores.
-- **Milvus Distributed** - arquitectura distribuida para manejar miles de millones de vectores a gran escala.
+* **Milvus Lite**: Biblioteca Python ligera instalable mediante pip. Ideal para pruebas y proyectos académicos. Es la versión utilizada en este proyecto.
+* **Milvus Standalone**: Implementación de nodo único apta para manejar grandes volúmenes de vectores.
+* **Milvus Distributed**: Arquitectura distribuida diseñada para manejar miles de millones de vectores a gran escala.
 
 ---
 
 ## Estructura del proyecto
 
-- **Milvus-Peliculas/Prueba.py** - verifica que Milvus Lite este instalado correctamente
-- **Milvus-Peliculas/datos.py** - crea la coleccion de peliculas y carga los datos vectorizados
-- **Milvus-Peliculas/busqueda.py** - realiza la consulta semantica con Milvus
-- **Postgrest-Peliculas/script-tabla.sql** - crea la tabla en PostgreSQL con el estandar de nomenclatura
-- **Postgrest-Peliculas/script-insert.sql** - inserta los mismos datos en PostgreSQL
-- **Postgrest-Peliculas/script-consultas.sql** - consultas con ILIKE para comparar con Milvus
-- **.gitignore** - indica a Git que archivos no subir al repositorio
+### Archivos de Milvus
+
+* **prueba.py** – Verifica que Milvus Lite esté instalado correctamente.
+* **datos.py** – Crea la colección de películas, genera los embeddings e inserta los datos en Milvus.
+* **busqueda.py** – Realiza búsquedas semánticas mediante similitud vectorial.
+
+### Archivo de PostgreSQL
+
+* **Peliculas.sql** – Crea la base de datos, la tabla, inserta los registros y ejecuta las consultas SQL utilizadas para comparar PostgreSQL con Milvus.
+
+### Otros archivos
+
+* **README.md** – Documentación del proyecto.
+* **.gitignore** – Archivos excluidos del repositorio.
 
 ---
 
 ## Requisitos
 
-- Windows 10 o superior
-- Python 3.11
-- Visual Studio Code
+* Windows 10 o superior
+* Python 3.11
+* Visual Studio Code
 
 ---
 
-## Instalacion
+## Instalación
 
-**1. Instala Python**
-Entra a python.org/downloads y descarga la version mas reciente. Durante la instalacion respondele que si a las dos preguntas que aparecen.
+### 1. Instalar Python 3.11
 
-**2. Instala Visual Studio Code**
-Entra a code.visualstudio.com y descargalo.
+Descargue Python 3.11 desde:
 
-**3. Instala la extension de PowerShell en VS Code**
-Abre VS Code, ve al icono de extensiones en la barra izquierda, busca PowerShell e instalala.
+https://www.python.org/downloads/release/python-3119/
 
-**4. Crea la carpeta del proyecto**
-Crea una carpeta llamada Milvus en el escritorio. Luego en VS Code ve a File, Open Folder y seleccionala.
+Seleccione:
 
-**5. Abre la terminal**
-En VS Code ve a Terminal, New Terminal.
-
-**6. Permite ejecutar scripts en Windows (solo se hace una vez)**
-Cuando te pregunte, escribe S y presiona Enter.
+```text
+Windows installer (64-bit)
 ```
+
+Durante la instalación marque la opción:
+
+```text
+Add Python to PATH
+```
+
+---
+
+### 2. Instalar Visual Studio Code
+
+Descargue Visual Studio Code desde:
+
+https://code.visualstudio.com/
+
+---
+
+### 3. Instalar la extensión PowerShell
+
+Abra Visual Studio Code, acceda al apartado de extensiones, busque **PowerShell** e instálela.
+
+---
+
+### 4. Crear la carpeta del proyecto
+
+Cree una carpeta llamada:
+
+```text
+Milvus
+```
+
+Luego selecciónela desde:
+
+```text
+File → Open Folder
+```
+
+---
+
+### 5. Abrir la terminal
+
+En Visual Studio Code seleccione:
+
+```text
+Terminal → New Terminal
+```
+
+---
+
+### 6. Permitir la ejecución de scripts en Windows
+
+Ejecutar una única vez:
+
+```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-**7. Instala Python 3.11**
-Milvus Lite no es compatible con versiones muy nuevas de Python. Descarga Python 3.11 desde:
-```
-https://www.python.org/downloads/release/python-3119/
-```
-Baja hasta abajo y descarga Windows installer (64-bit). Durante la instalacion marca Add Python to PATH.
+Cuando Windows lo solicite, escribir:
 
-**8. Crea el entorno virtual**
+```text
+S
 ```
+
+y presionar Enter.
+
+---
+
+### 7. Crear el entorno virtual
+
+```powershell
 py -3.11 -m venv venv
 ```
 
-**9. Activa el entorno virtual**
-```
+---
+
+### 8. Activar el entorno virtual
+
+```powershell
 venv\Scripts\activate
 ```
-Sabes que funciono cuando aparece (venv) al inicio de la linea.
 
-**10. Instala Milvus Lite**
+La activación fue exitosa cuando aparece:
+
+```text
+(venv)
 ```
+
+al inicio de la terminal.
+
+---
+
+### 9. Instalar Milvus Lite
+
+```powershell
 pip install pymilvus milvus-lite
 ```
 
-**11. Instala la libreria para vectorizar texto**
-```
+---
+
+### 10. Instalar Sentence Transformers
+
+```powershell
 pip install sentence-transformers
 ```
 
 ---
 
-## Como ejecutar el proyecto
+## Ejecución del proyecto
 
-Primero carga los datos:
+### 1. Verificar la instalación
+
+```powershell
+python prueba.py
 ```
+
+Si aparece el mensaje:
+
+```text
+Milvus Lite funciona correctamente!
+```
+
+la instalación fue exitosa.
+
+---
+
+### 2. Cargar los datos en Milvus
+
+```powershell
 python datos.py
 ```
-La primera vez se descarga automaticamente el modelo de vectorizacion, un archivo de aproximadamente 90MB. Esto solo pasa una vez.
 
-Luego ejecuta la busqueda:
-```
+Este script:
+
+* Crea la colección `peliculas`.
+* Genera embeddings de 384 dimensiones utilizando el modelo `all-MiniLM-L6-v2`.
+* Inserta las 10 películas de prueba.
+* Muestra información sobre los vectores generados.
+
+La primera ejecución descargará automáticamente el modelo de embeddings (aproximadamente 90 MB).
+
+---
+
+### 3. Ejecutar una búsqueda semántica
+
+```powershell
 python busqueda.py
 ```
-El programa te pide que escribas algo, por ejemplo: superheroe, historia de amor, pelicula en el espacio. Muestra los resultados de la busqueda por similitud de significado. La comparacion con consultas tradicionales se realiza de forma independiente.
+
+El programa solicitará una consulta de texto, por ejemplo:
+
+```text
+superheroes
+amor
+espacio
+```
+
+La consulta será convertida en un embedding y comparada con los vectores almacenados en Milvus.
+
+Como resultado se mostrarán las películas más cercanas semánticamente junto con su distancia de similitud.
 
 ---
 
-## Tecnologias usadas
+### 4. Ejecutar la comparación en PostgreSQL
 
-- Python 3.11
-- Milvus Lite (Apache 2.0)
-- sentence-transformers
-- Modelo all-MiniLM-L6-v2
+Abra PostgreSQL y ejecute:
+
+```sql
+Peliculas.sql
+```
+
+Este script:
+
+* Crea la base de datos.
+* Crea la tabla de películas.
+* Inserta los registros.
+* Ejecuta consultas mediante `ILIKE`.
+
+Los resultados permiten comparar una búsqueda basada en coincidencia textual con la búsqueda semántica realizada por Milvus.
 
 ---
 
-*Universidad de Costa Rica - IF0007 Bases de Datos I - 2026*
+## Tecnologías utilizadas
+
+* Python 3.11
+* Milvus Lite
+* PostgreSQL
+* Sentence Transformers
+* Modelo all-MiniLM-L6-v2
+* Visual Studio Code
+
+---
+
+## Licencia
+
+Este proyecto fue desarrollado con fines académicos para el curso IF0007 – Bases de Datos I.
+
+---
+
+**Universidad de Costa Rica**
+**Sede Regional del Caribe | Recinto de Limón**
+**IF0007 – Bases de Datos I**
+**2026**
